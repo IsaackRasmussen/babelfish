@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'language_screen.dart';
+import 'package:record/record.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,17 +57,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  bool isRecording = false;
+  final record = AudioRecorder();
 
-  void _incrementCounter() {
+  void _toggleRecording() {
     setState(() {
+      isRecording = !isRecording;
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
+
+    if (isRecording) {
+      _startRecording();
+    } else {
+      _stopRecording();
+    }
+  }
+
+  void _startRecording() async {
+// Check and request permission if needed
+    if (await record.hasPermission()) {
+      // Start recording to file
+      await record.start(const RecordConfig(), path: './myFile.m4a');
+    }
+  }
+
+  void _stopRecording() async {
+    final path = await record.stop();
   }
 
   @override
@@ -84,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('Welcome'),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -105,20 +126,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            OutlinedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const LanguageScreen(),
+                    ),
+                  );
+                },
+                child: Text('Start')),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _toggleRecording,
+        tooltip: 'Start recording',
+        child: isRecording
+            ? const Icon(Icons.mic_external_on_rounded)
+            : const Icon(Icons.mic_none_rounded),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
