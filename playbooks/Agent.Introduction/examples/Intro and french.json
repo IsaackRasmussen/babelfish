@@ -1,0 +1,9 @@
+{
+  "name": "20d59291-e196-4e8f-a880-c8ddfa1a569a",
+  "playbookOutput": {
+    "executionSummary": "Agent has returned sample sentences"
+  },
+  "displayName": "Intro and french",
+  "retrievalStrategy": "DEFAULT",
+  "languageCode": "undetected"
+}

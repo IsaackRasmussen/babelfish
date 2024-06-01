@@ -1,0 +1,14 @@
+{
+  "name": "f13a0d8c-b960-4725-8a0d-dfba79184f51",
+  "displayName": "Gemini1_5",
+  "openApiSpec": {
+    "authentication": {
+      "apiKeyConfig": {
+        "keyName": "key",
+        "apiKey": "AIzaSyCqY7OqM6VU4hAeOGYIQf0btITsPPtKAp4",
+        "requestLocation": "QUERY_STRING"
+      }
+    }
+  },
+  "toolType": "CUSTOMIZED_TOOL"
+}
