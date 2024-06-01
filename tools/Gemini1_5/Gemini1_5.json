@@ -5,7 +5,7 @@
     "authentication": {
       "apiKeyConfig": {
         "keyName": "key",
-        "apiKey": "AIzaSyCqY7OqM6VU4hAeOGYIQf0btITsPPtKAp4",
+        "apiKey": "Secret",
         "requestLocation": "QUERY_STRING"
       }
     }
