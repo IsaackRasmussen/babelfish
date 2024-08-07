@@ -1,0 +1,40 @@
+name: babelfish_app
+description: "A new Flutter project."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  audioplayers: ^6.0.0
+  cloud_text_to_speech: ^1.1.3
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  google_speech: ^5.2.1
+  path_provider: ^2.1.4
+  permission_handler: ^11.3.1
+  record: ^5.1.2
+  stomp_dart_client: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    # Add assets from the images directory to the application.
+    - assets/images/
+    - assets/configs/test_service_account.json
